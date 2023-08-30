@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>FAST QUIZ</title>
+    
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo lg-heading text-light">F & Q</h1>
+                <ul class="nav-items">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/about/">About</a></li>
+                    <li class="nav-item"><a href="/contact/">Contact</a></li>
+    
+                </ul>
+            </div>
+
+        </nav>
+        <div class="header-content">
+            <h1 class="lg-heading text-light">FAST QUIZ</h1>
+            <p class="text-light">A quick and easy way to test your knowledge on any topic.  </p>
+            <div class="questions">
+                <a href="/football/" class="btn btn-primary text-red md-heading" target="_blank">Football</a>
+                <a href="/general/" class="btn btn-primary text-red md-heading" target="_blank">General</a>
+            </div>
+            
+        </div>
+    </header>
+</body>
+</html>

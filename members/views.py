@@ -1,0 +1,83 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
+from .models import Question_f,Question_g
+
+def home(request):
+  return render(request,"index.html")
+def contact(request):
+    return render(request,'contact.html')
+def about(request):
+    return render(request,'about.html')
+def football(request):
+      questions=[
+         {'ans':'answer_key1',
+          'answer':'2'},
+         {'ans':'answer_key2',
+          'answer':'3'},
+         {'ans':'answer_key3',
+          'answer':'4'},
+         {'ans':'answer_key4',
+          'answer':'3'},
+         {'ans':'answer_key5',
+          'answer':'2'},
+         {'ans':'answer_key6',
+          'answer':'4'},
+         {'ans':'answer_key7',
+          'answer':'4'},
+         {'ans':'answer_key8',
+          'answer':'3'},
+         {'ans':'answer_key9',
+          'answer':'3'},
+         {'ans':'answer_key10',
+          'answer':'4'},
+      ]
+      score=0
+      for q in questions:
+         user_answer=request.POST.get(q['ans'])
+         if str(user_answer)== q['answer']:
+            score+=1
+
+      
+      football = Question_f.objects.all().order_by('id')
+      data ={
+         'total': score ,
+         'football': football,
+      }
+      return render(request,'football.html',data)
+def general(request):
+      questions=[
+         {'ans':'answer_key1',
+          'answer':'2'},
+         {'ans':'answer_key2',
+          'answer':'1'},
+         {'ans':'answer_key3',
+          'answer':'4'},
+         {'ans':'answer_key4',
+          'answer':'2'},
+         {'ans':'answer_key5',
+          'answer':'3'},
+         {'ans':'answer_key6',
+          'answer':'1'},
+         {'ans':'answer_key7',
+          'answer':'4'},
+         {'ans':'answer_key8',
+          'answer':'2'},
+         {'ans':'answer_key9',
+          'answer':'3'},
+         {'ans':'answer_key10',
+          'answer':'1'},
+      ]
+      score=0
+      for q in questions:
+         user_answer=request.POST.get(q['ans'])
+         if str(user_answer)== q['answer']:
+            score+=1
+
+      
+      general = Question_g.objects.all().order_by('id')
+      data ={
+         'total': score ,
+         'general': general,
+      }
+      return render(request,'general.html',data)

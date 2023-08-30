@@ -1,0 +1,51 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <title>FAST QUIZ</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="/">BACK TO HOME PAGE</a>
+        </nav>
+        <div class="btn" id="btn2"><h1>your final score is <br><span style="font-size: 5rem;"> {{total}}</span></h1></div>
+        <div class="questions">
+            <div class="container">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for x in general %}
+                    <div class="header-content">
+                        <div class="header-question">
+                            <h1>QUESTION {{x.id}} <BR> <br> {{x.question}}</h1> <br>
+                            </div>
+                            <div class="header-answer">
+                                <div class="answer-1">
+                                    <h3>1.{{x.answer1}}</h3>
+                                    <h3>3.{{x.answer3}}</h3>
+                                </div>
+                                <div class="answer-2">
+                                    <h3>2.{{x.answer2}}</h3>
+                                    <h3>4.{{x.answer4}}</h3>
+                                </div>
+                            </div>
+                            <select name="answer_key{{x.id}}" id="" class="selelct-answer btn">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn" id="btn1">click for result</button>
+                </form>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
